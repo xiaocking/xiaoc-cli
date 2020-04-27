@@ -28,7 +28,7 @@ program
           const spinner = ora("正在下载模板...");
           spinner.start();
           download(
-            "https://github.com:xiaocking/xiaoc-cli#master",
+            "https://github.com:xiaocking/xiaoc-cli-template#master",
             name,
             { clone: true },
             (err) => {
@@ -37,20 +37,23 @@ program
                 console.log(symbols.error, chalk.red(err));
               } else {
                 spinner.succeed();
-                const fileName = `${name}/package.json`;
+                const fileList = [`${name}/package.json`, `${name}/README.md`];
                 const meta = {
                   name,
                   description: answers.description,
                   author: answers.author,
                 };
-                if (fs.existsSync(fileName)) {
-                  const content = fs.readFileSync(fileName).toString();
-                  const result = handlebars.compile(content)(meta);
-                  fs.writeFileSync(fileName, result);
+                for (var i = 0, len = fileList.length; i < len; i++) {
+                  if (fs.existsSync(fileList[i])) {
+                    const content = fs.readFileSync(fileList[i]).toString();
+                    const result = handlebars.compile(content)(meta);
+                    fs.writeFileSync(fileList[i], result);
+                  }
                 }
                 console.log(symbols.success, chalk.green("项目初始化完成"));
                 console.log("");
                 console.log(chalk.green(` cd ${name}`));
+                console.log(chalk.green(` npm install`));
                 console.log(chalk.green(` npm run serve`));
                 console.log("");
               }
