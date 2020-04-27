@@ -37,7 +37,11 @@ program
                 console.log(symbols.error, chalk.red(err));
               } else {
                 spinner.succeed();
-                const fileList = [`${name}/package.json`, `${name}/README.md`];
+                const fileList = [
+                  `${name}/package.json`,
+                  `${name}/README.md`,
+                  `${name}/vue.config.js`,
+                ];
                 const meta = {
                   name,
                   description: answers.description,
