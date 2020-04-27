@@ -50,8 +50,8 @@ program
                 }
                 console.log(symbols.success, chalk.green("项目初始化完成"));
                 console.log("");
-                console.log(chalk.green(`cd ${name}`));
-                console.log(chalk.green(`npm run serve`));
+                console.log(chalk.green(` cd ${name}`));
+                console.log(chalk.green(` npm run serve`));
                 console.log("");
               }
             }
