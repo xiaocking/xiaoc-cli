@@ -1,0 +1,24 @@
+{
+  "name": "xiaoc-cli",
+  "version": "1.0.0",
+  "description": "xiaoc-cli test",
+  "main": "index.js",
+  "dependencies": {
+    "chalk": "^4.0.0",
+    "commander": "^5.1.0",
+    "download-git-repo": "^3.0.2",
+    "handlebars": "^4.7.6",
+    "inquirer": "^7.1.0",
+    "log-symbols": "^4.0.0",
+    "ora": "^4.0.4"
+  },
+  "bin": {
+    "xiaoc": "index.js"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
