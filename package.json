@@ -13,7 +13,7 @@
     "ora": "^4.0.4"
   },
   "bin": {
-    "xiaoc": "index.js"
+    "xiaoc": "./index.js"
   },
   "devDependencies": {},
   "scripts": {

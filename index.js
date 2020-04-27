@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const fs = require("fs");
 const program = require("commander");
 const download = require("download-git-repo");
@@ -48,6 +49,10 @@ program
                   fs.writeFileSync(fileName, result);
                 }
                 console.log(symbols.success, chalk.green("项目初始化完成"));
+                console.log("");
+                console.log(chalk.green(`cd ${name}`));
+                console.log(chalk.green(`npm run serve`));
+                console.log("");
               }
             }
           );
@@ -57,4 +62,12 @@ program
       console.log(symbols.error, chalk.red("项目已存在"));
     }
   });
+
+program.on("--help", () => {
+  console.log("");
+  console.log("-v | --version 查看版本");
+  console.log("init <ProjectName> 创建项目");
+  console.log("");
+});
+
 program.parse(process.argv);
