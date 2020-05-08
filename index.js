@@ -7,8 +7,14 @@ const ora = require("ora");
 const chalk = require("chalk");
 const symbols = require("log-symbols");
 
+var cbDataPackage = getPackageJson();
+function getPackageJson() {
+  var _packageJson = fs.readFileSync("./package.json");
+  return JSON.parse(_packageJson);
+}
+
 program
-  .version("1.0.0", "-v, --version")
+  .version(cbDataPackage.version, "-v, --version")
   .command("init <name>")
   .action((name) => {
     if (!fs.existsSync(name)) {

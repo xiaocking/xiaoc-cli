@@ -1,15 +1,11 @@
 {
   "name": "xiaoc-cli",
-  "version": "1.0.3",
+  "version": "1.0.7",
   "description": "xiaoc-cli test",
   "main": "index.js",
   "dependencies": {
-    "@babel/polyfill": "^7.8.7",
-    "@babel/runtime": "^7.9.6",
-    "@babel/runtime-corejs3": "^7.9.6",
     "chalk": "^4.0.0",
     "commander": "^5.1.0",
-    "core-js": "^3.6.5",
     "download-git-repo": "^3.0.2",
     "handlebars": "^4.7.6",
     "inquirer": "^7.1.0",
@@ -20,6 +16,10 @@
     "xiaoc": "./index.js"
   },
   "devDependencies": {
+    "core-js": "^3.6.5",
+    "@babel/polyfill": "^7.8.7",
+    "@babel/runtime": "^7.9.6",
+    "@babel/runtime-corejs3": "^7.9.6",
     "@babel/core": "^7.9.6",
     "@babel/plugin-transform-runtime": "^7.9.6",
     "@babel/preset-env": "^7.9.6",

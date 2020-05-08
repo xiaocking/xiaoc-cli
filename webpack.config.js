@@ -34,9 +34,17 @@ module.exports = {
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin([
       "./LICENSE",
-      "./package.json",
-      "./README.md",
       "./package-lock.json",
+      "./README.md",
+      {
+        from: "./package.json",
+        to: "package.json",
+        transform: function (ctx, cb) {
+          var data = JSON.parse(ctx.toString());
+          data.devDependencies = {};
+          return JSON.stringify(data);
+        },
+      },
     ]),
     new webpack.BannerPlugin({ banner: "#!/usr/bin/env node", raw: true }),
   ],
