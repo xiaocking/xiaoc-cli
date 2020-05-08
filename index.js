@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 const fs = require("fs");
 const program = require("commander");
 const download = require("download-git-repo");
