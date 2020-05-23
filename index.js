@@ -1,4 +1,5 @@
 const fs = require("fs");
+const path = require("path");
 const program = require("commander");
 const download = require("download-git-repo");
 const handlebars = require("handlebars");
@@ -9,7 +10,7 @@ const symbols = require("log-symbols");
 
 var cbDataPackage = getPackageJson();
 function getPackageJson() {
-  var _packageJson = fs.readFileSync("./package.json");
+  var _packageJson = fs.readFileSync(path.resolve(__dirname, "./package.json"));
   return JSON.parse(_packageJson);
 }
 
