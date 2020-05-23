@@ -1,5 +1,4 @@
 const fs = require("fs");
-// const path = require("path");
 const program = require("commander");
 const download = require("download-git-repo");
 const handlebars = require("handlebars");
@@ -10,31 +9,57 @@ const symbols = require("log-symbols");
 
 var cbDataPackage = getPackageJson();
 function getPackageJson() {
-  // var _packageJson = fs.readFileSync(path.resolve(__dirname, "package.json"));
   var _packageJson = fs.readFileSync("./package.json");
   return JSON.parse(_packageJson);
 }
+
+
+const promptList = [
+  {
+    name: "description",
+    message: "请输入项目描述",
+  },
+  {
+    name: "author",
+    message: "请输入作者名称",
+  },
+  {
+    type: 'list',
+    message: '请选择模板类型',
+    name: 'type',
+    choices: [
+      "Vue",
+      "VuePress"
+    ],
+    filter: function (val) {
+      // 使用filter将回答变为小写
+      return val.toLowerCase();
+    }
+  }
+]
+
+
 program
   .version(cbDataPackage.version, "-v, --version")
   .command("init <name>")
   .action((name) => {
     if (!fs.existsSync(name)) {
       inquirer
-        .prompt([
-          {
-            name: "description",
-            message: "请输入项目描述",
-          },
-          {
-            name: "author",
-            message: "请输入作者名称",
-          },
-        ])
+        .prompt(promptList)
         .then((answers) => {
           const spinner = ora("正在下载模板...");
           spinner.start();
+          const meta = {
+            name,
+            description: answers.description,
+            author: answers.author,
+            type: answers.type
+          };
+
+          const branch = answers.type == "vue" ? "master" : answers.type;
+
           download(
-            "https://github.com:xiaocking/xiaoc-cli-template#master",
+            "https://github.com:xiaocking/xiaoc-cli-template#" + branch,
             name,
             { clone: true },
             (err) => {
@@ -48,11 +73,7 @@ program
                   `${name}/README.md`,
                   `${name}/vue.config.js`,
                 ];
-                const meta = {
-                  name,
-                  description: answers.description,
-                  author: answers.author,
-                };
+
                 for (var i = 0, len = fileList.length; i < len; i++) {
                   if (fs.existsSync(fileList[i])) {
                     const content = fs.readFileSync(fileList[i]).toString();
