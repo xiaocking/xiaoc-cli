@@ -1,14 +1,14 @@
 # xiaoc-cli
 
-`基于 node.js 制作脚手架`
+> 基于 node.js 制作脚手架
 
 ## 安装
 
-`npm install xiaoc-cli -g`
+> npm install xiaoc-cli -g
 
 ## 查看
 
-```
+```bash
 在命令行中查看版本
 xiaoc-cli -v
 
@@ -20,8 +20,8 @@ xiaoc-cli -v
 
 ## 使用
 
-```
-创建项目
+```bash
+# 创建项目
 xiaoc init <projectName>
 
 --> 输入项目描述
@@ -37,7 +37,7 @@ xiaoc init <projectName>
 
 ## 启动项目
 
-```
+```bash
 # 进入项目
 cd <projectName>
 
